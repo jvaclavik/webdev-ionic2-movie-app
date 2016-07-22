@@ -1,0 +1,27 @@
+<ion-header class="opaque">
+
+  <ion-navbar>
+    <ion-title>movies</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content fullscreen>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let movie of data.movies">
+      <ion-item (click)="showDetail(movie)">
+        <ion-avatar item-right>
+          <img src="http://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" alt="">
+        </ion-avatar>
+        <h2>{{movie.title}}</h2>
+      </ion-item>
+      <ion-item-options side="right" (ionSwipe)="deleteMovie(movie)">
+        <button expandable danger (click)="deleteMovie(movie)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
